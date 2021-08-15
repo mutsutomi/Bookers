@@ -19,31 +19,19 @@
         <td><%= link_to "destroy", book_path(book.id), method: :delete %></td>
       </tr>
   </tbody>
-<!--<span><%= book.title %></span>-->
 <% end %>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Body</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-      <tr>
-        <td>達人プログラマー</td>
-        <td>プログラマ入門者は必読！</td>
-        <td><a class="show_14203" href="/books/14203">Show</a></td>
-        <td><a class="edit_14203" href="/books/14203/edit">Edit</a></td>
-        <td><a data-confirm="Are you sure?" class="destroy_14203" rel="nofollow" data-method="delete" href="/books/14203">Destroy</a></td>
-      </tr>
-  </tbody>
 </table>
 
 
 <h1>New book</h1>
+<% if @book.errors.any? %>
+  <%= @book.errors.count %>error prohibited this book from being saved:
+  <% @book.errors.full_messages.each do |message| %>
+   <li>
+   <%= message %>  
+   </li>
+  <% end %>
+<% end %>
 <!-- form_with部分 -->
 <%= form_with model:@book, local:true do |f| %>
 
