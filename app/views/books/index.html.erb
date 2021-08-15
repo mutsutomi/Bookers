@@ -1,9 +1,25 @@
 <h1>Books</h1>
 
-<h1>投稿一覧</h1>
-<% @lists.each do |list| %>
-  <p>タイトル</p>
-  <span><%= list.title %></span>
+<table>
+<% @books.each do |book| %>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Body</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+      <tr>
+        <td><%= book.title %></td>
+        <td><%= book.body %></td>
+        <td><%= link_to "show", book_path(book.id) %></td>
+        <td><%= link_to "edit", edit_book_path(book.id) %></td>
+        <td><%= link_to "destroy", book_path(book.id), method: :delete %></td>
+      </tr>
+  </tbody>
+<!--<span><%= book.title %></span>-->
 <% end %>
 
 <table>
